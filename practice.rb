@@ -34,5 +34,14 @@ blockchain.each do |transaction|
   balances[transaction["to_user"]] =
     balances[transaction["to_user"]] + transaction["amount"]
 
-    puts balances
+  from = transaction["from_user"]
+
+  if from
+    balances[from] =
+      balances[from] - transaction["amount"]
   end
+end
+
+balances.each do |name, amount|
+  puts "#{name.capitalize}'s KelloggCoin balance is #{amount}"
+end
