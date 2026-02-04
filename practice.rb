@@ -27,3 +27,12 @@ blockchain = [
 # Anthony's KelloggCoin balance is 2650
 
 # 👇👇👇 Your code HERE 👇👇👇
+
+balances = Hash.new(0)
+
+blockchain.each do |transaction|
+  balances[transaction["to_user"]] =
+    balances[transaction["to_user"]] + transaction["amount"]
+
+    puts balances
+  end
